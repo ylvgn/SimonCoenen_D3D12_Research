@@ -105,9 +105,9 @@ String GetErrorString(HRESULT errorCode, ID3D12Device* pDevice)
 			for (uint64 i = 0; i < pInfo->GetNumStoredMessages(); ++i)
 			{
 				size_t messageLength = 0;
-				pInfo->GetMessageA(0, nullptr, &messageLength);
+				pInfo->GetMessageA(i, nullptr, &messageLength);
 				D3D12_MESSAGE* pMessage = (D3D12_MESSAGE*)malloc(messageLength);
-				pInfo->GetMessageA(0, pMessage, &messageLength);
+				pInfo->GetMessageA(i, pMessage, &messageLength);
 				str += pMessage->pDescription;
 				str += "\n";
 				free(pMessage);
